@@ -12,22 +12,24 @@ var authentication = {
   key: 'c8f35087efb5a27e2b5f3024260e0242&'
 }
 
+var yummly = require('yummly');
 
 $( "#inputItem" ).submit(function( event ) {
 event.preventDefault();
 
 var keywords = $('#itemInput').val();
-var url = "http://api.yummly.com/v1/api/recipes?q="+keywords+"&_app_id="+id+"&_app_key="+key;
- $.ajax({                                                                            
-      type: 'GET',
-       url: url,
-       dataType: 'jsonp',
-       //dataType: 'jsonp json'
-       success: function() { console.log('Success!'); },
-       error: function(data, data2) { console.log(data); },
-       //jsonp: false,
-       //jsonpCallback: 'recipeGet'                                          
-  });
+
+yummly.search({
+  credentials: credentials,
+  query: {
+    q: keywords
+  }
+}, function (error, response, json) {
+  if (error) {
+    console.error(error);
+  } else if (response.statusCode === 200) {
+    console.log(json);
+  }
 });
 </script>
 
@@ -37,7 +39,7 @@ var url = "http://api.yummly.com/v1/api/recipes?q="+keywords+"&_app_id="+id+"&_a
 <body>
 
 https://www.npmjs.org/package/yummly</br>
-https://www.mashape.com/ismaelc/yummly-2
+https://www.mashape.com/ismaelc/yummly-2</br>
 <div>
 
 This is where you can look up a recipe with a single item
