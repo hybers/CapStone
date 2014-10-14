@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>This is where you can add and remove items</title>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+ <script>
+$(function() {
+$( "#day_added" ).datepicker();
+});
+</script>
+
+</head>
+
+<body>
+
+<div>
+This is where you can add items to my database
+
+<form action="insertItem.php" method="post">
+Name of the Item: <input type="text" name="name">
+Day Added: <input type="text" id="day_added">
+Amount: <input type="text" name="amount">
+User ID: <input type="text" name="userID">
+<input type="submit">
+</form>
+</div>
+
+<div>
+This is where you can remove an item by name and ID
+
+<form action="removeItem.php" method="post">
+Name of the Item: <input type="text" name="name">
+User ID: <input type="text" name="userID">
+<input type="submit">
+</form>
+
+</div>
+
+</html> 
